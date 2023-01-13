@@ -37,7 +37,7 @@ function getDatafromAPI(data) {
             redirect: "follow",
         })
             .then((data) => {
-            return data;
+            console.log(data);
         })
             .catch((error) => console.error(error));
     });

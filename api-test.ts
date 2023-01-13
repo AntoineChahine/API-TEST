@@ -37,7 +37,7 @@ export async function getDatafromAPI(data: Tuning) {
     redirect: "follow",
   })
     .then((data) => {
-      return data;
+      console.log(data);
     })
     .catch((error) => console.error(error));
 }
