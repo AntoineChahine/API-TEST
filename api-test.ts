@@ -10,15 +10,19 @@ export enum type {
 class Tuning {
   key: string | undefined;
 
-  publicKey: string | undefined;
+  instance_prompt: string | undefined;
 
-  message: string | undefined;
+  class_prompt: string | undefined;
 
   images: [string] | undefined;
 
-  trainingName: string | undefined;
+  seed: number | undefined;
 
-  trainingType: type | undefined;
+  training_type: type | undefined;
+
+  max_train_steps: string | undefined;
+
+  webhook: string | undefined;
 }
 
 export async function getDatafromAPI(data: Tuning) {
