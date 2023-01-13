@@ -36,8 +36,8 @@ export async function getDatafromAPI(data: Tuning) {
     body: JSON.stringify(data),
     redirect: "follow",
   })
-    .then((response) => {
-      return response.json();
+    .then((data) => {
+      return data;
     })
     .catch((error) => console.error(error));
 }
