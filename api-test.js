@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDatafromAPI = exports.antoine = void 0;
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
-const node_fetch_1 = require("node-fetch");
 function antoine() {
     return "hi from antoine";
 }
@@ -22,18 +21,16 @@ exports.antoine = antoine;
 function getDatafromAPI() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
-        const payload = {
+        const data = {
             key: `lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh`,
             message: "photo of",
             adhik: "key",
             trainingName: "person",
             trainingType: "type",
         };
-        const data = new node_fetch_1.FormData();
-        data.append("json", JSON.stringify(payload));
         yield (0, cross_fetch_1.default)(url, {
             method: "POST",
-            body: data,
+            body: JSON.stringify(data),
         })
             .then((response) => response.json())
             .then((data) => console.log(data));
