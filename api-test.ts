@@ -6,6 +6,7 @@ export enum type {
   Cat,
   Dog,
 }
+
 class Tuning {
   key: string | undefined;
 
@@ -36,7 +37,7 @@ export async function getDatafromAPI(data: Tuning) {
     body: JSON.stringify(data),
     redirect: "follow",
   })
-    .then((response) => console.log(response))
+    .then((response) => console.log(response.json()))
     .catch((error) => console.error(error));
 
   return data;
