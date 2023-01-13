@@ -1,5 +1,5 @@
 import fetch from "cross-fetch";
-import { FormData } from "node-fetch";
+import { Headers } from "cross-fetch";
 export function antoine(): string {
   return "hi from antoine";
 }
