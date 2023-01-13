@@ -1,3 +1,4 @@
+import fetch from "cross-fetch";
 export function antoine(): string {
   return "hi from antoine";
 }
