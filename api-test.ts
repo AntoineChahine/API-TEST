@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 export function antoine(): string {
   return "hi from antoine";
 }
