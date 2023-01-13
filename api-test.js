@@ -36,9 +36,8 @@ function getDatafromAPI(data) {
             body: JSON.stringify(data),
             redirect: "follow",
         })
-            .then((data) => {
-            console.log(data);
-        })
+            .then((response) => console.log(response.json()))
+            .then((data) => console.log(data))
             .catch((error) => console.error(error));
     });
 }
