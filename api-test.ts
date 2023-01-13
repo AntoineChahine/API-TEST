@@ -7,7 +7,7 @@ export function antoine(): string {
 export async function getDatafromAPI() {
   const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
   const data = {
-    key: `lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh`,
+    key: "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
     message: "photo of",
     adhik: "key",
     trainingName: "person",
@@ -16,7 +16,8 @@ export async function getDatafromAPI() {
   await fetch(url, {
     method: "POST",
     headers: {
-      "X-API-KEY": `lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh`,
+      "X-API-KEY":
+        "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
     },
     body: JSON.stringify(data),
   })

@@ -22,7 +22,7 @@ function getDatafromAPI() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
         const data = {
-            key: `lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh`,
+            key: "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
             message: "photo of",
             adhik: "key",
             trainingName: "person",
@@ -31,7 +31,7 @@ function getDatafromAPI() {
         yield (0, cross_fetch_1.default)(url, {
             method: "POST",
             headers: {
-                "X-API-KEY": `lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh`,
+                "X-API-KEY": "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
             },
             body: JSON.stringify(data),
         })
