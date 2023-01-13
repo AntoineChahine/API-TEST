@@ -21,19 +21,21 @@ exports.antoine = antoine;
 function getDatafromAPI() {
     return __awaiter(this, void 0, void 0, function* () {
         const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
-        const data = {
+        const myHeaders = new Headers();
+        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
+        myHeaders.append("Content-Type", "application/json");
+        const data = JSON.stringify({
             key: "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
             message: "photo of",
             adhik: "key",
             trainingName: "person",
             trainingType: "type",
-        };
+        });
         yield (0, cross_fetch_1.default)(url, {
             method: "POST",
-            headers: {
-                "X-API-KEY": "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
-            },
-            body: JSON.stringify(data),
+            headers: myHeaders,
+            body: data,
+            redirect: "follow",
         })
             .then((response) => response.json())
             .then((data) => console.log(data))
