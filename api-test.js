@@ -39,6 +39,7 @@ function getDatafromAPI(data) {
             .then((response) => console.log(response.json()))
             .then((data) => console.log(data))
             .catch((error) => console.error(error));
+        return data;
     });
 }
 exports.getDatafromAPI = getDatafromAPI;

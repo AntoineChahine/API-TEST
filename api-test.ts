@@ -39,4 +39,6 @@ export async function getDatafromAPI(data: Tuning) {
     .then((response) => console.log(response.json()))
     .then((data) => console.log(data))
     .catch((error) => console.error(error));
+
+  return data;
 }
