@@ -4,10 +4,9 @@ export function antoine(): string {
 }
 
 export async function getDatafromAPI() {
-  const response = await fetch(
-    "https://stablediffusionapi.com/api/sandbox/v3/fine_tune"
-  );
-  const data = await response.json();
-  console.log(data);
-  return data;
+  fetch("https://stablediffusionapi.com/api/sandbox/v3/fine_tune", {
+    method: "POST",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
 }
