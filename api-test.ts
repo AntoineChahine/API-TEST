@@ -1,32 +1,26 @@
 import fetch from "cross-fetch";
 import { Headers } from "cross-fetch";
-
-export class dataDto {
-  key: string | undefined;
-
-  message: string | undefined;
-
-  dhikr: string | undefined;
-
-  trainingName: string | undefined;
-
-  trainingType: type | undefined;
-}
-
 export enum type {
   Men,
   Women,
   Cat,
   Dog,
 }
+class Tuning {
+  publicKey: string | undefined;
 
-export async function getDatafromAPI({
-  key,
-  message,
-  dhikr,
-  trainingName,
-  trainingType,
-}: dataDto) {
+  message: string | undefined;
+
+  key: string | undefined;
+
+  images: [string] | undefined;
+
+  trainingName: string | undefined;
+
+  trainingType: type | undefined;
+}
+
+export async function getDatafromAPI(data: Tuning) {
   const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
 
   const myHeaders = new Headers();
@@ -36,18 +30,10 @@ export async function getDatafromAPI({
   );
   myHeaders.append("Content-Type", "application/json");
 
-  const data = JSON.stringify({
-    key: key,
-    message: message,
-    adhik: dhikr,
-    trainingName: trainingName,
-    trainingType: trainingType,
-  });
-
   await fetch(url, {
     method: "POST",
     headers: myHeaders,
-    body: data,
+    body: JSON.stringify(data),
     redirect: "follow",
   })
     .then((response) => {

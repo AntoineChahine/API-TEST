@@ -12,12 +12,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDatafromAPI = exports.type = exports.dataDto = void 0;
+exports.getDatafromAPI = exports.type = void 0;
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const cross_fetch_2 = require("cross-fetch");
-class dataDto {
-}
-exports.dataDto = dataDto;
 var type;
 (function (type) {
     type[type["Men"] = 0] = "Men";
@@ -25,23 +22,18 @@ var type;
     type[type["Cat"] = 2] = "Cat";
     type[type["Dog"] = 3] = "Dog";
 })(type = exports.type || (exports.type = {}));
-function getDatafromAPI({ key, message, dhikr, trainingName, trainingType, }) {
+class Tuning {
+}
+function getDatafromAPI(data) {
     return __awaiter(this, void 0, void 0, function* () {
         const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
         const myHeaders = new cross_fetch_2.Headers();
         myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
         myHeaders.append("Content-Type", "application/json");
-        const data = JSON.stringify({
-            key: key,
-            message: message,
-            adhik: dhikr,
-            trainingName: trainingName,
-            trainingType: trainingType,
-        });
         yield (0, cross_fetch_1.default)(url, {
             method: "POST",
             headers: myHeaders,
-            body: data,
+            body: JSON.stringify(data),
             redirect: "follow",
         })
             .then((response) => {
