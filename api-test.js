@@ -20,8 +20,12 @@ function antoine() {
 exports.antoine = antoine;
 function getDatafromAPI() {
     return __awaiter(this, void 0, void 0, function* () {
-        (0, cross_fetch_1.default)("https://stablediffusionapi.com/api/sandbox/v3/fine_tune", {
+        const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
+        (0, cross_fetch_1.default)(url, {
             method: "POST",
+            headers: {
+                "X-Auth-Token": "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
+            },
         })
             .then((response) => response.json())
             .then((data) => console.log(data));

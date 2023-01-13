@@ -4,8 +4,13 @@ export function antoine(): string {
 }
 
 export async function getDatafromAPI() {
-  fetch("https://stablediffusionapi.com/api/sandbox/v3/fine_tune", {
+  const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
+  fetch(url, {
     method: "POST",
+    headers: {
+      "X-Auth-Token":
+        "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh",
+    },
   })
     .then((response) => response.json())
     .then((data) => console.log(data));
