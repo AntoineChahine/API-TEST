@@ -7,11 +7,11 @@ export enum type {
   Dog,
 }
 class Tuning {
+  key: string | undefined;
+
   publicKey: string | undefined;
 
   message: string | undefined;
-
-  key: string | undefined;
 
   images: [string] | undefined;
 
