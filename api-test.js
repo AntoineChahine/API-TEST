@@ -38,10 +38,11 @@ function getDatafromAPI() {
             body: data,
             redirect: "follow",
         })
-            .then((response) => response.json())
+            .then((response) => {
+            return response;
+        })
             .then((data) => console.log(data))
             .catch((error) => console.error(error));
-        console.log(data);
     });
 }
 exports.getDatafromAPI = getDatafromAPI;
