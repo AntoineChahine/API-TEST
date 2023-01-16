@@ -30,7 +30,7 @@ class Key {
   key: string | undefined;
 }
 
-function fetchData(url: RequestInfo | URL) {
+function fetchData(url: string) {
   const myHeaders = new Headers();
   myHeaders.append(
     `${process.env["API_KEY_NAME "]}`,
