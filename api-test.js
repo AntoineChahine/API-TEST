@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getTrainingStatus = exports.createDreamboothRequest = exports.type = void 0;
+exports.deleteDreamboothModel = exports.cancelTraining = exports.getTrainingStatus = exports.createDreamboothRequest = exports.type = void 0;
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const cross_fetch_2 = require("cross-fetch");
 var type;
@@ -64,3 +64,41 @@ function getTrainingStatus(data) {
     });
 }
 exports.getTrainingStatus = getTrainingStatus;
+function cancelTraining(data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const url = "https://stablediffusionapi.com/api/v3/cancle_training/model_id";
+        const myHeaders = new cross_fetch_2.Headers();
+        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
+        myHeaders.append("Content-Type", "application/json");
+        yield (0, cross_fetch_1.default)(url, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(data),
+            redirect: "follow",
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+        return data;
+    });
+}
+exports.cancelTraining = cancelTraining;
+function deleteDreamboothModel(data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const url = "https://stablediffusionapi.com/api/v3/finetune/delete/your_model_id";
+        const myHeaders = new cross_fetch_2.Headers();
+        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
+        myHeaders.append("Content-Type", "application/json");
+        yield (0, cross_fetch_1.default)(url, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(data),
+            redirect: "follow",
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+        return data;
+    });
+}
+exports.deleteDreamboothModel = deleteDreamboothModel;

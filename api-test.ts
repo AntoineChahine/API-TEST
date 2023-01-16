@@ -75,3 +75,50 @@ export async function getTrainingStatus(data: Key) {
 
   return data;
 }
+
+export async function cancelTraining(data: Key) {
+  const url = "https://stablediffusionapi.com/api/v3/cancle_training/model_id";
+
+  const myHeaders = new Headers();
+  myHeaders.append(
+    "418b381eee78a74fad67e1839c0163b5",
+    "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh"
+  );
+  myHeaders.append("Content-Type", "application/json");
+
+  await fetch(url, {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(data),
+    redirect: "follow",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+
+  return data;
+}
+
+export async function deleteDreamboothModel(data: Key) {
+  const url =
+    "https://stablediffusionapi.com/api/v3/finetune/delete/your_model_id";
+
+  const myHeaders = new Headers();
+  myHeaders.append(
+    "418b381eee78a74fad67e1839c0163b5",
+    "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh"
+  );
+  myHeaders.append("Content-Type", "application/json");
+
+  await fetch(url, {
+    method: "POST",
+    headers: myHeaders,
+    body: JSON.stringify(data),
+    redirect: "follow",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error));
+
+  return data;
+}
