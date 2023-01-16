@@ -1,4 +1,27 @@
 "use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -15,6 +38,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.deleteDreamboothModel = exports.cancelTraining = exports.getTrainingStatus = exports.createDreamboothRequest = exports.type = void 0;
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const cross_fetch_2 = require("cross-fetch");
+const process = __importStar(require("process"));
 var type;
 (function (type) {
     type[type["Men"] = 0] = "Men";
@@ -26,78 +50,57 @@ class Tuning {
 }
 class Key {
 }
+function fetchData(url) {
+    const myHeaders = new cross_fetch_2.Headers();
+    myHeaders.append(`${process.env["API_KEY_NAME "]}`, `${process.env["API_KEY_VALUE "]}`);
+    myHeaders.append("Content-Type", "application/json");
+    return (0, cross_fetch_1.default)(url)
+        .then((response) => {
+        if (!response.ok) {
+            throw new Error(response.statusText);
+        }
+        return response.json();
+    })
+        .catch((error) => {
+        return error;
+    });
+}
 function createDreamboothRequest(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
-        const myHeaders = new cross_fetch_2.Headers();
-        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
-        myHeaders.append("Content-Type", "application/json");
-        yield (0, cross_fetch_1.default)(url, {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify(data),
-            redirect: "follow",
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error(error));
+        const url = `${process.env["BASE_URL "]}/sandbox/v3/fine_tune`;
+        yield fetchData(url).then((data) => {
+            return data;
+        });
         return data;
     });
 }
 exports.createDreamboothRequest = createDreamboothRequest;
 function getTrainingStatus(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune_status/dyxjeiQ6kg";
-        const myHeaders = new cross_fetch_2.Headers();
-        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
-        myHeaders.append("Content-Type", "application/json");
-        yield (0, cross_fetch_1.default)(url, {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify(data),
-            redirect: "follow",
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error(error));
+        const url = `${process.env["BASE_URL "]}/sandbox/v3/fine_tune_status/dyxjeiQ6kg`;
+        yield fetchData(url).then((data) => {
+            return data;
+        });
         return data;
     });
 }
 exports.getTrainingStatus = getTrainingStatus;
 function cancelTraining(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = "https://stablediffusionapi.com/api/v3/cancle_training/model_id";
-        const myHeaders = new cross_fetch_2.Headers();
-        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
-        myHeaders.append("Content-Type", "application/json");
-        yield (0, cross_fetch_1.default)(url, {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify(data),
-            redirect: "follow",
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error(error));
+        const url = `${process.env["BASE_URL "]}/v3/cancle_training/model_id`;
+        yield fetchData(url).then((data) => {
+            return data;
+        });
         return data;
     });
 }
 exports.cancelTraining = cancelTraining;
 function deleteDreamboothModel(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const url = "https://stablediffusionapi.com/api/v3/finetune/delete/your_model_id";
-        const myHeaders = new cross_fetch_2.Headers();
-        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
-        myHeaders.append("Content-Type", "application/json");
-        yield (0, cross_fetch_1.default)(url, {
-            method: "POST",
-            headers: myHeaders,
-            body: JSON.stringify(data),
-            redirect: "follow",
-        })
-            .then((response) => response.json())
-            .then((data) => console.log(data))
-            .catch((error) => console.error(error));
+        const url = `${process.env["BASE_URL "]}/v3/finetune/delete/your_model_id`;
+        yield fetchData(url).then((data) => {
+            return data;
+        });
         return data;
     });
 }

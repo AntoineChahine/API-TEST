@@ -1,5 +1,6 @@
 import fetch from "cross-fetch";
 import { Headers } from "cross-fetch";
+import * as process from "process";
 export enum type {
   Men,
   Women,
@@ -29,96 +30,62 @@ class Key {
   key: string | undefined;
 }
 
-export async function createDreamboothRequest(data: Tuning) {
-  const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
-
+function fetchData(url: RequestInfo | URL) {
   const myHeaders = new Headers();
   myHeaders.append(
-    "418b381eee78a74fad67e1839c0163b5",
-    "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh"
+    `${process.env["API_KEY_NAME "]}`,
+    `${process.env["API_KEY_VALUE "]}`
   );
   myHeaders.append("Content-Type", "application/json");
 
-  await fetch(url, {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(data),
-    redirect: "follow",
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
+  return fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      return error;
+    });
+}
+
+export async function createDreamboothRequest(data: Tuning) {
+  const url = `${process.env["BASE_URL "]}/sandbox/v3/fine_tune`;
+
+  await fetchData(url).then((data) => {
+    return data;
+  });
 
   return data;
 }
 
 export async function getTrainingStatus(data: Key) {
-  const url =
-    "https://stablediffusionapi.com/api/sandbox/v3/fine_tune_status/dyxjeiQ6kg";
+  const url = `${process.env["BASE_URL "]}/sandbox/v3/fine_tune_status/dyxjeiQ6kg`;
 
-  const myHeaders = new Headers();
-  myHeaders.append(
-    "418b381eee78a74fad67e1839c0163b5",
-    "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh"
-  );
-  myHeaders.append("Content-Type", "application/json");
-
-  await fetch(url, {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(data),
-    redirect: "follow",
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
+  await fetchData(url).then((data) => {
+    return data;
+  });
 
   return data;
 }
 
 export async function cancelTraining(data: Key) {
-  const url = "https://stablediffusionapi.com/api/v3/cancle_training/model_id";
+  const url = `${process.env["BASE_URL "]}/v3/cancle_training/model_id`;
 
-  const myHeaders = new Headers();
-  myHeaders.append(
-    "418b381eee78a74fad67e1839c0163b5",
-    "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh"
-  );
-  myHeaders.append("Content-Type", "application/json");
-
-  await fetch(url, {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(data),
-    redirect: "follow",
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
+  await fetchData(url).then((data) => {
+    return data;
+  });
 
   return data;
 }
 
 export async function deleteDreamboothModel(data: Key) {
-  const url =
-    "https://stablediffusionapi.com/api/v3/finetune/delete/your_model_id";
+  const url = `${process.env["BASE_URL "]}/v3/finetune/delete/your_model_id`;
 
-  const myHeaders = new Headers();
-  myHeaders.append(
-    "418b381eee78a74fad67e1839c0163b5",
-    "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh"
-  );
-  myHeaders.append("Content-Type", "application/json");
-
-  await fetch(url, {
-    method: "POST",
-    headers: myHeaders,
-    body: JSON.stringify(data),
-    redirect: "follow",
-  })
-    .then((response) => response.json())
-    .then((data) => console.log(data))
-    .catch((error) => console.error(error));
+  await fetchData(url).then((data) => {
+    return data;
+  });
 
   return data;
 }
