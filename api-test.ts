@@ -53,7 +53,7 @@ function fetchData(url: RequestInfo | URL) {
 
 export async function createDreamboothRequest(data: Tuning) {
   const baseUrl = `${process.env["BASE_URL "]}`;
-  const relativeUrl = `/sandbox/v3/fine_tune`;
+  const relativeUrl = "/sandbox/v3/fine_tune";
   const url = new URL(baseUrl, relativeUrl);
 
   await fetchData(url).then((data) => {
@@ -65,7 +65,7 @@ export async function createDreamboothRequest(data: Tuning) {
 
 export async function getTrainingStatus(data: Key) {
   const baseUrl = `${process.env["BASE_URL "]}`;
-  const relativeUrl = `/sandbox/v3/fine_tune_status/dyxjeiQ6kg`;
+  const relativeUrl = "/sandbox/v3/fine_tune_status/dyxjeiQ6kg";
   const url = new URL(baseUrl, relativeUrl);
 
   await fetchData(url).then((data) => {
@@ -77,7 +77,7 @@ export async function getTrainingStatus(data: Key) {
 
 export async function cancelTraining(data: Key) {
   const baseUrl = `${process.env["BASE_URL "]}`;
-  const relativeUrl = `/v3/cancle_training/model_id`;
+  const relativeUrl = "/v3/cancle_training/model_id";
   const url = new URL(baseUrl, relativeUrl);
 
   await fetchData(url).then((data) => {
@@ -89,7 +89,7 @@ export async function cancelTraining(data: Key) {
 
 export async function deleteDreamboothModel(data: Key) {
   const baseUrl = `${process.env["BASE_URL "]}`;
-  const relativeUrl = `/v3/finetune/delete/your_model_id`;
+  const relativeUrl = "/v3/finetune/delete/your_model_id";
   const url = new URL(baseUrl, relativeUrl);
 
   await fetchData(url).then((data) => {
