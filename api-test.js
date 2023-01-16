@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDatafromAPI = exports.type = void 0;
+exports.getTrainingStatus = exports.createDreamboothRequest = exports.type = void 0;
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 const cross_fetch_2 = require("cross-fetch");
 var type;
@@ -24,7 +24,9 @@ var type;
 })(type = exports.type || (exports.type = {}));
 class Tuning {
 }
-function getDatafromAPI(data) {
+class Key {
+}
+function createDreamboothRequest(data) {
     return __awaiter(this, void 0, void 0, function* () {
         const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune";
         const myHeaders = new cross_fetch_2.Headers();
@@ -42,4 +44,23 @@ function getDatafromAPI(data) {
         return data;
     });
 }
-exports.getDatafromAPI = getDatafromAPI;
+exports.createDreamboothRequest = createDreamboothRequest;
+function getTrainingStatus(data) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const url = "https://stablediffusionapi.com/api/sandbox/v3/fine_tune_status/dyxjeiQ6kg";
+        const myHeaders = new cross_fetch_2.Headers();
+        myHeaders.append("418b381eee78a74fad67e1839c0163b5", "lUHfz6htjXph9Is7ZkuoIp218ZFbs1eqQRgI7MI9SuZR7ULbGR8XUZAhgYBh");
+        myHeaders.append("Content-Type", "application/json");
+        yield (0, cross_fetch_1.default)(url, {
+            method: "POST",
+            headers: myHeaders,
+            body: JSON.stringify(data),
+            redirect: "follow",
+        })
+            .then((response) => response.json())
+            .then((data) => console.log(data))
+            .catch((error) => console.error(error));
+        return data;
+    });
+}
+exports.getTrainingStatus = getTrainingStatus;
