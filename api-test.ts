@@ -41,12 +41,13 @@ function fetchData(url: RequestInfo | URL) {
   return fetch(url)
     .then((response) => {
       if (!response.ok) {
+        console.log(response.statusText);
         throw new Error(response.statusText);
       }
       return response.json();
     })
     .catch((error) => {
-      return error;
+      console.log(error);
     });
 }
 

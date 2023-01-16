@@ -57,12 +57,13 @@ function fetchData(url) {
     return (0, cross_fetch_1.default)(url)
         .then((response) => {
         if (!response.ok) {
+            console.log(response.statusText);
             throw new Error(response.statusText);
         }
         return response.json();
     })
         .catch((error) => {
-        return error;
+        console.log(error);
     });
 }
 function createDreamboothRequest(data) {
