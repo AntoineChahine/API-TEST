@@ -68,9 +68,7 @@ function fetchData(url) {
 }
 function createDreamboothRequest(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const baseUrl = `${process.env["BASE_URL "]}`;
-        const relativeUrl = "/sandbox/v3/fine_tune";
-        const url = new URL(baseUrl, relativeUrl);
+        const url = `${process.env["BASE_URL "]}/sandbox/v3/fine_tune`;
         yield fetchData(url).then((data) => {
             return data;
         });
@@ -80,9 +78,7 @@ function createDreamboothRequest(data) {
 exports.createDreamboothRequest = createDreamboothRequest;
 function getTrainingStatus(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const baseUrl = `${process.env["BASE_URL "]}`;
-        const relativeUrl = "/sandbox/v3/fine_tune_status/dyxjeiQ6kg";
-        const url = new URL(baseUrl, relativeUrl);
+        const url = `${process.env["BASE_URL "]}/sandbox/v3/fine_tune_status/dyxjeiQ6kg`;
         yield fetchData(url).then((data) => {
             return data;
         });
@@ -92,9 +88,7 @@ function getTrainingStatus(data) {
 exports.getTrainingStatus = getTrainingStatus;
 function cancelTraining(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const baseUrl = `${process.env["BASE_URL "]}`;
-        const relativeUrl = "/v3/cancle_training/model_id";
-        const url = new URL(baseUrl, relativeUrl);
+        const url = `${process.env["BASE_URL "]}/v3/cancle_training/model_id`;
         yield fetchData(url).then((data) => {
             return data;
         });
@@ -104,9 +98,7 @@ function cancelTraining(data) {
 exports.cancelTraining = cancelTraining;
 function deleteDreamboothModel(data) {
     return __awaiter(this, void 0, void 0, function* () {
-        const baseUrl = `${process.env["BASE_URL "]}`;
-        const relativeUrl = "/v3/finetune/delete/your_model_id";
-        const url = new URL(baseUrl, relativeUrl);
+        const url = `${process.env["BASE_URL "]}/v3/finetune/delete/your_model_id`;
         yield fetchData(url).then((data) => {
             return data;
         });
