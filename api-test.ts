@@ -44,6 +44,8 @@ function fetchData(url: string) {
         console.log(response.statusText);
         throw new Error(response.statusText);
       }
+      console.log(response.json());
+      console.log(response.statusText);
       return response.json();
     })
     .catch((error) => {
